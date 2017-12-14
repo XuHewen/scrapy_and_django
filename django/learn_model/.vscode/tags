@@ -1,0 +1,39 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALLOWED_HOSTS	../learn_model/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	../learn_model/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:87
+BASE_DIR	../learn_model/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../learn_model/settings.py	/^DATABASES = {$/;"	kind:variable	line:76
+DEBUG	../learn_model/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+INSTALLED_APPS	../learn_model/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+LANGUAGE_CODE	../learn_model/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:106
+MIDDLEWARE	../learn_model/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:42
+ROOT_URLCONF	../learn_model/settings.py	/^ROOT_URLCONF = 'learn_model.urls'$/;"	kind:variable	line:52
+SECRET_KEY	../learn_model/settings.py	/^SECRET_KEY = '$-dlqbeb#aep=t$hha1yfa%yq39x64!8lh+#@p%*2%ts%=t$*1'$/;"	kind:variable	line:23
+STATIC_URL	../learn_model/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:120
+TEMPLATES	../learn_model/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:54
+TIME_ZONE	../learn_model/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:108
+USE_I18N	../learn_model/settings.py	/^USE_I18N = True$/;"	kind:variable	line:110
+USE_L10N	../learn_model/settings.py	/^USE_L10N = True$/;"	kind:variable	line:112
+USE_TZ	../learn_model/settings.py	/^USE_TZ = True$/;"	kind:variable	line:114
+WSGI_APPLICATION	../learn_model/settings.py	/^WSGI_APPLICATION = 'learn_model.wsgi.application'$/;"	kind:variable	line:70
+__init__.py	../learn_model/__init__.py	1;"	kind:file	line:1
+admin	../learn_model/urls.py	/^from django.contrib import admin$/;"	kind:namespace	line:17
+application	../learn_model/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+django	../manage.py	/^            import django$/;"	kind:namespace	line:14
+execute_from_command_line	../manage.py	/^        from django.core.management import execute_from_command_line$/;"	kind:namespace	line:8
+get_wsgi_application	../learn_model/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	kind:namespace	line:12
+manage.py	../manage.py	1;"	kind:file	line:1
+os	../learn_model/settings.py	/^import os$/;"	kind:namespace	line:13
+os	../learn_model/wsgi.py	/^import os$/;"	kind:namespace	line:10
+os	../manage.py	/^import os$/;"	kind:namespace	line:2
+settings.py	../learn_model/settings.py	1;"	kind:file	line:1
+sys	../manage.py	/^import sys$/;"	kind:namespace	line:3
+url	../learn_model/urls.py	/^from django.conf.urls import url$/;"	kind:namespace	line:16
+urlpatterns	../learn_model/urls.py	/^urlpatterns = [$/;"	kind:variable	line:19
+urls.py	../learn_model/urls.py	1;"	kind:file	line:1
+wsgi.py	../learn_model/wsgi.py	1;"	kind:file	line:1
