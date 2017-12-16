@@ -7,13 +7,14 @@ from urllib.parse import urljoin
 from QiuShi.items import QiushiItem
 from QiuShi.items import QiuShiItemLoader
 
-import time
+from scrapy_redis.spiders import RedisSpider
 
 
-class QsSpider(scrapy.Spider):
+class QsSpider(RedisSpider):
     name = 'QS'
     allowed_domains = ['www.qiushibaike.com']
-    start_urls = ['https://www.qiushibaike.com/hot/']
+    # start_urls = ['https://www.qiushibaike.com/hot/']
+    redis_key = 'qs:start_urls'
 
     def parse(self, response):
 
@@ -35,7 +36,6 @@ class QsSpider(scrapy.Spider):
             yield Request(next_url, callback=self.parse)
 
     def parse_single(self, response):
-        time.sleep(0.5)
         qsItem = QiushiItem()
 
         author_xpath = '//div[contains(@class, "author")]//a[last()]/h2/text()'
