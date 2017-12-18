@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "django/myblogsite"
+		},
+		{
+			"path": "django/pepii"
+		},
+		{
+			"path": "django/imooc"
 		}
 	],
 	"settings": {}
