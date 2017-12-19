@@ -7,6 +7,7 @@
 
 from scrapy import signals
 from fake_useragent import UserAgent
+import random
 
 
 class WikepediaSpiderMiddleware(object):
@@ -78,36 +79,37 @@ class RandomUserAgentMiddleware(object):
         request.headers.setdefault('User-Agent', get_ua())
 
 
-# class MyproxiesSpiderMiddleware(object):
+class MyproxiesSpiderMiddleware(object):
 
-#       def __init__(self, ip=''):
-#           self.ip = ip
+    def __init__(self, ip=''):
+        self.ip = ip
 
-#       def process_request(self, request, spider):
-#           thisip = random.choice(IPPOOL)
-#           print("this is ip:" + thisip["ipaddr"])
+    def process_request(self, request, spider):
+        thisip = random.choice(IPPOOL)
+        print("this is ip:" + thisip["ipaddr"])
+        request.meta['proxy'] = 'http://' + thisip['ipaddr']
 
 
-# IPPOOL = [
-#     {"ipaddr": "61.129.70.131:8080"},
-#     {"ipaddr": "61.152.81.193:9100"},
-#     {"ipaddr": "120.204.85.29:3128"},
-#     {"ipaddr": "219.228.126.86:8123"},
-#     {"ipaddr": "61.152.81.193:9100"},
-#     {"ipaddr": "218.82.33.225:53853"},
-#     {"ipaddr": "223.167.190.17:42789"}
-# ]
+IPPOOL = [
+    {"ipaddr": "61.129.70.131:8080"},
+    {"ipaddr": "61.152.81.193:9100"},
+    {"ipaddr": "120.204.85.29:3128"},
+    {"ipaddr": "219.228.126.86:8123"},
+    {"ipaddr": "61.152.81.193:9100"},
+    {"ipaddr": "218.82.33.225:53853"},
+    {"ipaddr": "223.167.190.17:42789"}
+]
 
 # class JSPageMiddleware(object):
 
 #     def process_request(self, request, spider):
-#         if spider.name == 'leaders_guangdong_shantou_haojiang_spider' and request.url == spider.start_urls[0]:
+#         if spider.name == 'wiki':
 #             spider.driver.get(request.url)
 
 #             import time
 #             from scrapy.http import HtmlResponse
 #             print(u'浏览器安全检查，强行等待6秒')
-#             time.sleep(6)
+#             time.sleep(60)
 
 #             return HtmlResponse(url=spider.driver.current_url,
 #                                 encoding='utf-8',
