@@ -16,7 +16,6 @@ class LeaderProfile(models.Model):
     GENDER_CHOICE = (
         ('male', u'男'),
         ('female', u'女'),
-        ('unknown', u'未知')
     )
     YEAR_CHOICES = []
     MONTH_CHOICES = []
@@ -33,24 +32,37 @@ class LeaderProfile(models.Model):
                             verbose_name=u'姓名')
     gender = models.CharField(max_length=7,
                               choices=GENDER_CHOICE,
-                              default='male',
+                              null=True,
+                              blank=True,
                               verbose_name=u'性别')
     ethnicity = models.CharField(max_length=10,
                                  null=True,
                                  blank=True,
                                  default=u'汉族',
                                  verbose_name=u'民族')
-    year_of_birth = models.CharField(max_length=4,
-                                     choices=YEAR_CHOICES,
-                                     null=True,
-                                     blank=True,
-                                     verbose_name=u'出生年份')
 
-    month_of_birth = models.CharField(max_length=2,
-                                      choices=MONTH_CHOICES,
-                                      null=True,
-                                      blank=True,
-                                      verbose_name=u'出生月份')
+    # year_of_birth = models.CharField(max_length=4,
+    #                                 #  choices=YEAR_CHOICES,
+    #                                  null=True,
+    #                                  blank=True,
+    #                                  verbose_name=u'出生年份')
+
+    # month_of_birth = models.CharField(max_length=2,
+    #                                 #   choices=MONTH_CHOICES,
+    #                                   null=True,
+    #                                   blank=True,
+    #                                   verbose_name=u'出生月份')
+
+    # day_of_birth = models.CharField(max_length=4,
+    #                                 null=True,
+    #                                 blank=True,
+    #                                 verbose_name=u'出生日')
+
+    birth = models.CharField(max_length=15,
+                             null=True,
+                             blank=True,
+                             help_text=u'格式: 1999-01-01 (没有用*代替)',
+                             verbose_name=u'生日')
     
     position = models.CharField(max_length=40,
                                 default=None,

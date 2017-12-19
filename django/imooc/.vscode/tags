@@ -2837,7 +2837,7 @@ urlencode	../extra_apps/xadmin/views/base.py	/^from django.utils.http import url
 urlencode	../extra_apps/xadmin/views/dashboard.py	/^from django.utils.http import urlencode, urlquote$/;"	kind:namespace	line:16
 urllib	../extra_apps/xadmin/plugins/themes.py	/^    import urllib$/;"	kind:namespace	line:14
 urllib	../extra_apps/xadmin/plugins/themes.py	/^    import urllib.parse$/;"	kind:namespace	line:16
-urlpatterns	../imooc/urls.py	/^urlpatterns = [$/;"	kind:variable	line:25
+urlpatterns	../imooc/urls.py	/^urlpatterns = [$/;"	kind:variable	line:26
 urlquote	../extra_apps/xadmin/views/dashboard.py	/^from django.utils.http import urlencode, urlquote$/;"	kind:namespace	line:16
 urls	../extra_apps/xadmin/sites.py	/^    def urls(self):$/;"	kind:member	line:338
 urls.py	../imooc/urls.py	1;"	kind:file	line:1

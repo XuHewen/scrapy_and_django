@@ -52,9 +52,9 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'wikepedia.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'wikepedia.middlewares.RandomUserAgentMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -64,9 +64,9 @@ COOKIES_ENABLED = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'wikepedia.pipelines.WikepediaPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'wikepedia.pipelines.WikepediaPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -91,10 +91,18 @@ AUTOTHROTTLE_ENABLED = True
 
 
 # my setting
-LOG_ENABLED = False
+# LOG_ENABLED = False
 
 # Top-level imports
-import os
-import sys
+# import os
+# import sys
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+
+MYSQL_HOST = "127.0.0.1"
+MYSQL_DBNAME = "wikipedia"
+MYSQL_USER = "root"
+MYSQL_PASSWORD = "808258"
+
+RANDOM_UA_TYPE = 'random'

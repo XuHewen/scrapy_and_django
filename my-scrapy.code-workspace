@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "scrapy/wikepedia"
+		},
+		{
+			"path": "scrapy/ZhiHu"
+		},
+		{
+			"path": "scrapy/QiuShi"
 		}
 	],
 	"settings": {}

@@ -6,6 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from fake_useragent import UserAgent
 
 
 class WikepediaSpiderMiddleware(object):
@@ -54,3 +55,61 @@ class WikepediaSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class RandomUserAgentMiddleware(object):
+    '''
+    随机更换User-Agent
+    '''
+
+    def __init__(self, crawler):
+        super(RandomUserAgentMiddleware, self).__init__()
+        self.ua = UserAgent()
+        self.ua_type = crawler.settings.get('RANDOM_UA_TYPE', 'random')
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler)
+
+    def process_request(self, request, spider):
+
+        def get_ua():
+            return getattr(self.ua, self.ua_type)
+        request.headers.setdefault('User-Agent', get_ua())
+
+
+# class MyproxiesSpiderMiddleware(object):
+
+#       def __init__(self, ip=''):
+#           self.ip = ip
+
+#       def process_request(self, request, spider):
+#           thisip = random.choice(IPPOOL)
+#           print("this is ip:" + thisip["ipaddr"])
+
+
+# IPPOOL = [
+#     {"ipaddr": "61.129.70.131:8080"},
+#     {"ipaddr": "61.152.81.193:9100"},
+#     {"ipaddr": "120.204.85.29:3128"},
+#     {"ipaddr": "219.228.126.86:8123"},
+#     {"ipaddr": "61.152.81.193:9100"},
+#     {"ipaddr": "218.82.33.225:53853"},
+#     {"ipaddr": "223.167.190.17:42789"}
+# ]
+
+# class JSPageMiddleware(object):
+
+#     def process_request(self, request, spider):
+#         if spider.name == 'leaders_guangdong_shantou_haojiang_spider' and request.url == spider.start_urls[0]:
+#             spider.driver.get(request.url)
+
+#             import time
+#             from scrapy.http import HtmlResponse
+#             print(u'浏览器安全检查，强行等待6秒')
+#             time.sleep(6)
+
+#             return HtmlResponse(url=spider.driver.current_url,
+#                                 encoding='utf-8',
+#                                 body=spider.driver.page_source,
+#                                 request=request)

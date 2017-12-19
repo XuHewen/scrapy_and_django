@@ -2,6 +2,11 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+from wikepedia.items import WikepediaItem
+
+# from selenium import webdriver
+# from pydispatch import dispatcher
+# from scrapy import signals
 
 
 class WikiSpider(CrawlSpider):
@@ -22,6 +27,16 @@ class WikiSpider(CrawlSpider):
              ),
     )
 
+    # 启动浏览器，并在spider关闭时关闭浏览器
+    # def __init__(self):
+    #     self.driver = webdriver.PhantomJS()
+    #     super(LeadersGuangdongShantouHaojiangSpider, self).__init__()
+    #     dispatcher.connect(self.spider_closed, signals.spider_closed)
+
+    # def spider_closed(self, spider):
+    #     print('spider closed')
+    #     self.driver.quit()
+
     def parse_start_url(self, response):
         return []
 
@@ -36,10 +51,15 @@ class WikiSpider(CrawlSpider):
 
     def parse_item(self, response):
         xpath_title = 'string(//h1[@id="firstHeading"])'
-        xpath_content = 'string(//div[@class="mw-parser-output"])'
+        xpath_content = '//div[@id="bodyContent"]'
+
+        item = WikepediaItem()
 
         title = response.xpath(xpath_title).extract_first()
         content = response.xpath(xpath_content).extract_first()
-        
-        print(response.url)
-        print(content)
+
+        item['url'] = response.url
+        item['title'] = title
+        item['content'] = content
+
+        yield item
