@@ -4,9 +4,9 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from wikepedia.items import WikepediaItem
 
-# from selenium import webdriver
-# from pydispatch import dispatcher
-# from scrapy import signals
+from selenium import webdriver
+from pydispatch import dispatcher
+from scrapy import signals
 
 
 class WikiSpider(CrawlSpider):
@@ -29,8 +29,8 @@ class WikiSpider(CrawlSpider):
 
     # 启动浏览器，并在spider关闭时关闭浏览器
     # def __init__(self):
-    #     self.driver = webdriver.PhantomJS()
-    #     super(LeadersGuangdongShantouHaojiangSpider, self).__init__()
+    #     self.driver = webdriver.Chrome()
+    #     super(WikiSpider, self).__init__()
     #     dispatcher.connect(self.spider_closed, signals.spider_closed)
 
     # def spider_closed(self, spider):
