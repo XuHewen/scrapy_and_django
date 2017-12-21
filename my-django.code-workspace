@@ -1,14 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "django/myblogsite"
-		},
-		{
 			"path": "django/pepii"
 		},
 		{
-			"path": "django/imooc"
+			"path": "django/myblogsite"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "/home/xu/store/miniconda3/envs/django_py2/bin/python"
+	}
 }

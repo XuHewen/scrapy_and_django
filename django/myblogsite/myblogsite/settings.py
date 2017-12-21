@@ -122,3 +122,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = '820607794@qq.com'
+EMAIL_HOST_PASSWORD = 'ppgxhsdfkceqbgad'
+EMAIL_USE_SSL = True
+EMAIL_FROM = '820607794@qq.com'

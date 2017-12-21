@@ -1,7 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.core.mail import send_mail
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.shortcuts import get_object_or_404, render
 from django.views.generic.base import View
+
+from myblogsite.settings import EMAIL_FROM
+
+from .forms import EmailPostForm
 from .models import Post
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -21,7 +26,7 @@ class PostListView(View):
                                                        'page': page})
 
 
-class PostDetailiew(View):
+class PostDetailView(View):
     def get(self, request, year, month, day, post):
         post = get_object_or_404(
             Post,
@@ -32,4 +37,42 @@ class PostDetailiew(View):
             publish__day=day
         )
         return render(request, 'blog/post/detail.html', {'post': post})
+
+
+class PostShareView(View):
+    def get(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id, status='published')
+        form = EmailPostForm()
+        return render(request, 'blog/post/share.html',
+                      {'post': post, 'form': form})
+    
+    def post(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id, status='published')
+        form = EmailPostForm(request.POST)
+        sent = False
+        if form.is_valid():
+            
+            cd = form.cleaned_data
+
+            post_url = request.build_absolute_uri(
+                post.get_absolute_url()
+            )
+
+            subject = '{} ({}) recommends you reading "{}"'.format(
+                cd['name'], cd['email'], post.title
+            )
+
+            message = 'Read "{}" at {}\n\n{}\'s comments: {}'.format(
+                post.title, post_url, cd['name'], cd['comments']
+            )
+
+            send_mail(subject, message, EMAIL_FROM, [cd['to']])
+
+            sent = True
+        else:
+            form = EmailPostForm()
         
+        return render(request, 'blog/post/share.html',
+                      {'post': post,
+                       'form': cd,
+                       'sent': sent})

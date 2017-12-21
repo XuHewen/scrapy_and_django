@@ -6,10 +6,13 @@ from .models import LeaderProfile
 class LeaderProfileForm(forms.ModelForm):
     birth_of_year = forms.CharField(label=u'出生年', required=False, min_length=4,
                                     max_length=4, help_text=u'4位数字')
-    birth_of_month = forms.CharField(label=u'出生月', required=False, min_length=4,
+    birth_of_month = forms.CharField(label=u'出生月', required=False, min_length=2,
                                      max_length=2, help_text=u'2位数字')
-    birth_of_day = forms.CharField(label=u'出生日', required=False, min_length=4,
+    birth_of_day = forms.CharField(label=u'出生日', required=False, min_length=2,
                                    max_length=2, help_text=u'2位数字')
+
+    remark = forms.CharField(label=u'原文', required=False,
+                             widget=forms.Textarea)
     
     # def save(self, commit=True):
     #     extra_field = self.cleaned_data.get('extra_field', None)

@@ -1,10 +1,12 @@
 # -*- coding:utf-8 -*-
+from django.contrib import admin
+
 import xadmin
+from utils import md5
 from xadmin import views
 
-from .models import LeaderProfile
-from django.contrib import admin
 from .forms import LeaderProfileForm
+from .models import LeaderProfile
 
 
 # xadmin 全局配置
@@ -18,22 +20,26 @@ class GlobalSettings(object):
     site_footer = 'TransferEasy'
     # menu_style = 'accordion'
 
+    # def get_site_menu(self):
+    #     return ({'title': u'领导人信息管理',
+    #              'perm': self.get_model_perm(LeaderProfile, 'change')}, )
+
 
 class LeaderProfileAdmin(object):
-    list_display = ['id', 'name', 'gender', 'position']
-    search_fields = ['name']
-    # list_filter = ['name']
+    form = LeaderProfileForm
+
+    list_display = ['id', 'admin_no', 'name']
+    search_fields = ['admin_no', 'name']
+    list_filter = ['admin_no']
     list_per_page = 20
     list_max_show_all = 100
 
-    form = LeaderProfileForm
-
-    exclude = ('birth', )
+    # exclude = ('birth', )
 
     fields = ('name', 'gender', 'ethnicity',
               'birth_of_year', 'birth_of_month', 'birth_of_day',
               'position', 'purposed_position', 'place_of_birth',
-              'photo_img', 'remark')
+              'photo_img', 'source', 'status', 'review_notes', 'remark')
 
     def save_models(self):
         obj = self.new_obj
@@ -42,6 +48,8 @@ class LeaderProfileAdmin(object):
         year = request.POST.get('birth_of_year')
         month = request.POST.get('birth_of_month')
         day = request.POST.get('birth_of_day')
+
+        obj.admin_no = request.user.username
 
         if not year:
             year = u'*'
@@ -55,6 +63,10 @@ class LeaderProfileAdmin(object):
         if year != u'*' or month != u'*' or day != u'*':
 
             obj.birth = year + '-' + month + '-' + day
+
+        md5_string = year + month + day + request.POST.get('name') + request.POST.get('gender') + request.POST.get('source')
+        obj.no = md5(md5_string)
+        
         obj.save()
 
 

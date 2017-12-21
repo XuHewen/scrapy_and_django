@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 class LeadersConfig(AppConfig):
     name = 'leaders'
-    verbose_name = u'领导人信息录入'
+    verbose_name = u'领导人信息管理'

@@ -17,76 +17,85 @@ class LeaderProfile(models.Model):
         ('male', u'男'),
         ('female', u'女'),
     )
-    YEAR_CHOICES = []
-    MONTH_CHOICES = []
-    for r in range(1930, (datetime.datetime.now().year - 18)):
-        YEAR_CHOICES.append((r, r))
-    for m in range(12):
-        if m < 9:
-            m = '0' + str(m+1)
-            MONTH_CHOICES.append((m, m))
-        else:
-            MONTH_CHOICES.append((m+1, m+1))
 
-    name = models.CharField(max_length=40,
+    no = models.CharField(max_length=50, default=None)
+
+    admin_no = models.CharField(max_length=50,
+                                default=None,
+                                verbose_name=u'录入用户姓名')
+
+    name = models.CharField(max_length=50,
                             verbose_name=u'姓名')
-    gender = models.CharField(max_length=7,
+
+    gender = models.CharField(max_length=10,
                               choices=GENDER_CHOICE,
                               null=True,
                               blank=True,
                               verbose_name=u'性别')
-    ethnicity = models.CharField(max_length=10,
+
+    ethnicity = models.CharField(max_length=20,
                                  null=True,
                                  blank=True,
-                                 default=u'汉族',
                                  verbose_name=u'民族')
 
-    # year_of_birth = models.CharField(max_length=4,
-    #                                 #  choices=YEAR_CHOICES,
-    #                                  null=True,
-    #                                  blank=True,
-    #                                  verbose_name=u'出生年份')
-
-    # month_of_birth = models.CharField(max_length=2,
-    #                                 #   choices=MONTH_CHOICES,
-    #                                   null=True,
-    #                                   blank=True,
-    #                                   verbose_name=u'出生月份')
-
-    # day_of_birth = models.CharField(max_length=4,
-    #                                 null=True,
-    #                                 blank=True,
-    #                                 verbose_name=u'出生日')
-
-    birth = models.CharField(max_length=15,
+    birth = models.CharField(max_length=30,
                              null=True,
                              blank=True,
                              help_text=u'格式: 1999-01-01 (没有用*代替)',
                              verbose_name=u'生日')
     
-    position = models.CharField(max_length=40,
-                                default=None,
+    position = models.CharField(max_length=500,
+                                null=True,
+                                blank=True,
                                 verbose_name=u'现任职位')
 
-    purposed_position = models.CharField(max_length=40,
-                                         default=None,
+    purposed_position = models.CharField(max_length=500,
                                          blank=True,
                                          null=True,
                                          verbose_name=u'拟任职位')
     
-    place_of_birth = models.CharField(max_length=40,
+    place_of_birth = models.CharField(max_length=50,
                                       null=True,
                                       blank=True,
                                       verbose_name=u'出生地')
-    photo_img = models.URLField(null=True,
-                                blank=True,
-                                verbose_name=u'图片链接')
-    remark = models.TextField(verbose_name=u'备注',
-                              default=None)
+    
+    photo_img = models.CharField(max_length=500,
+                                 null=True,
+                                 blank=True,
+                                 verbose_name=u'图片链接')
+
+    source = models.CharField(max_length=500,
+                              null=True,
+                              blank=True,
+                              verbose_name=u'原文地址')
+    
+    review_notes = models.CharField(max_length=50,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name=u'审核备注')
+
+    status = models.CharField(max_length=20,
+                              null=True,
+                              blank=True,
+                              verbose_name=u'状态')
+
+    remark = models.CharField(max_length=1000,
+                              null=True, blank=True,
+                              verbose_name=u'原文')
+
+    created = models.DateTimeField(default=datetime.datetime.now,
+                                   verbose_name=u'创建时间')
+
+    modified = models.DateTimeField(auto_now=True,
+                                    verbose_name=u'修改时间')
+
+    spider = models.CharField(max_length=20,
+                              null=True,
+                              blank=True)
 
     class Meta:
         ordering = ('-id', )
-        verbose_name = u'领导人'
+        verbose_name = u'领导人信息'
         verbose_name_plural = verbose_name
 
     def __str__(self):
