@@ -1,13 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "django/pepii"
+			"path": "django/bookmarks"
 		},
 		{
-			"path": "django/myblogsite"
+			"path": "django/pepii"
 		}
 	],
 	"settings": {
-		"python.pythonPath": "/home/xu/store/miniconda3/envs/django_py2/bin/python"
+		"python.pythonPath": "/home/happyxhw/miniconda3/envs/PY3/bin/python"
 	}
 }
