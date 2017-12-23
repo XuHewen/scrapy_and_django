@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "django/imooc"
+		},
+		{
+			"path": "django/kadmin"
 		}
 	],
 	"settings": {

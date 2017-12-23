@@ -118,3 +118,9 @@ DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
 ITEM_PIPELINES = {
     'scrapy_redis.pipelines.RedisPipeline': 300,
 }
+
+# Specify the host and port to use when connecting to Redis (optional).
+REDIS_HOST = '144.168.63.88'
+REDIS_PORT = '6999'
+
+LOG_LEVEL = 'ERROR'
