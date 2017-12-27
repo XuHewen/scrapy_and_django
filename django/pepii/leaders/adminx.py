@@ -82,9 +82,7 @@ class LeaderProfileAdmin(object):
         
         try:
             obj.save()
-            # messages.add_message(request, messages.INFO, u'保存成功')
         except:
-            # messages.add_message(request, messages.INFO, u'保存失败')
             pass
 
 
