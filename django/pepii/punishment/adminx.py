@@ -17,6 +17,12 @@ class PunishmentAdmin(object):
 
     exclude = ('admin_no', 'no', 'created', 'modified', 'spider')
 
+    def queryset(self):
+        qs = PunishmentModel.objects
+        if self.request.user.is_superuser:
+            return qs.all()
+        return qs.filter(admin_no=self.request.user.username)
+
     def save_models(self):
         obj = self.new_obj
         request = self.request
@@ -30,6 +36,9 @@ class PunishmentAdmin(object):
 
         obj.no = md5(md5_string)
 
-        obj.save()
+        try:
+            obj.save()
+        except:
+            pass
 
 xadmin.site.register(PunishmentModel, PunishmentAdmin)

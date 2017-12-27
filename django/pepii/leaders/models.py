@@ -3,22 +3,21 @@ from django.db import models
 import datetime
 
 
-class LeaderManager(models.Manager):
-    def get_queryset(self):
-
-        return super(LeaderManager, self).get_queryset()
+# class LeaderManager(models.Manager):
+#     def queryset(self):
+#         return super(LeaderManager, self).get_queryset()
 
 
 # Create your models here.
 class LeaderProfile(models.Model):
-    objects = LeaderManager()
+    # objects = LeaderManager()
 
     GENDER_CHOICE = (
         ('male', u'男'),
         ('female', u'女'),
     )
 
-    no = models.CharField(max_length=50, default=None)
+    no = models.CharField(max_length=50, default=None, unique=True)
 
     admin_no = models.CharField(max_length=50,
                                 default=None,

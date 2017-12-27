@@ -8,6 +8,8 @@ from xadmin import views
 from .forms import LeaderProfileForm
 from .models import LeaderProfile
 
+from django.contrib import messages
+
 
 # xadmin 全局配置
 class BaseSetting(object):
@@ -36,10 +38,21 @@ class LeaderProfileAdmin(object):
 
     # exclude = ('birth', )
 
-    fields = ('name', 'gender', 'ethnicity',
+    # fields = ('name', 'gender', 'ethnicity',
+    #           'birth_of_year', 'birth_of_month', 'birth_of_day',
+    #           'position', 'purposed_position', 'place_of_birth',
+    #           'photo_img', 'source', 'status', 'review_notes', 'remark')
+
+    fields = ('name', 'position', 'source', 'remark', 'gender', 'ethnicity',
               'birth_of_year', 'birth_of_month', 'birth_of_day',
-              'position', 'purposed_position', 'place_of_birth',
-              'photo_img', 'source', 'status', 'review_notes', 'remark')
+              'purposed_position', 'place_of_birth',
+              'photo_img', 'status', 'review_notes')
+
+    def queryset(self):
+        qs = LeaderProfile.objects
+        if self.request.user.is_superuser:
+            return qs.all()
+        return qs.filter(admin_no=self.request.user.username)
 
     def save_models(self):
         obj = self.new_obj
@@ -67,7 +80,12 @@ class LeaderProfileAdmin(object):
         md5_string = year + month + day + request.POST.get('name') + request.POST.get('gender') + request.POST.get('source')
         obj.no = md5(md5_string)
         
-        obj.save()
+        try:
+            obj.save()
+            # messages.add_message(request, messages.INFO, u'保存成功')
+        except:
+            # messages.add_message(request, messages.INFO, u'保存失败')
+            pass
 
 
 xadmin.site.register(LeaderProfile, LeaderProfileAdmin)

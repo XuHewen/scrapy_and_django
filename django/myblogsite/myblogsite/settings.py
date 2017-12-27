@@ -129,3 +129,5 @@ EMAIL_HOST_USER = '820607794@qq.com'
 EMAIL_HOST_PASSWORD = 'ppgxhsdfkceqbgad'
 EMAIL_USE_SSL = True
 EMAIL_FROM = '820607794@qq.com'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")

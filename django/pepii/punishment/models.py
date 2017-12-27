@@ -10,7 +10,8 @@ from django.db import models
 class PunishmentModel(models.Model):
     
     no = models.CharField(max_length=50,
-                          default=None)
+                          default=None,
+                          unique=True)
 
     admin_no = models.CharField(max_length=20,
                                 default=None,
