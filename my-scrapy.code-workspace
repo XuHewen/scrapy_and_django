@@ -2,7 +2,12 @@
 	"folders": [
 		{
 			"path": "scrapy/wikepedia"
+		},
+		{
+			"path": "scrapy/QiuShi"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "/home/xu/miniconda3/envs/scrapy3/bin/python"
+	}
 }

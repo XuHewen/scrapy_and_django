@@ -120,7 +120,7 @@ ITEM_PIPELINES = {
 }
 
 # Specify the host and port to use when connecting to Redis (optional).
-REDIS_HOST = '144.168.63.88'
-REDIS_PORT = '6999'
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
 
-LOG_LEVEL = 'ERROR'
+# LOG_LEVEL = 'ERROR'

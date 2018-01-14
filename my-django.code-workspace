@@ -1,19 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "django/bookmarks"
-		},
-		{
-			"path": "django/pepii"
-		},
-		{
-			"path": "django/imooc"
-		},
-		{
-			"path": "django/kadmin"
+			"path": "django/imoocsparksql"
 		}
 	],
 	"settings": {
-		"python.pythonPath": "/home/happyxhw/miniconda3/envs/PY3/bin/python"
+		"python.pythonPath": "/home/xu/miniconda3/envs/scrapy3/bin/python"
 	}
 }

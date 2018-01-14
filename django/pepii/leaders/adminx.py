@@ -43,10 +43,10 @@ class LeaderProfileAdmin(object):
     #           'position', 'purposed_position', 'place_of_birth',
     #           'photo_img', 'source', 'status', 'review_notes', 'remark')
 
-    fields = ('name', 'position', 'source', 'remark', 'gender', 'ethnicity',
+    fields = ('name', 'position', 'source', 'remark', 'photo_img', 'gender',
               'birth_of_year', 'birth_of_month', 'birth_of_day',
-              'purposed_position', 'place_of_birth',
-              'photo_img', 'status', 'review_notes')
+              'place_of_birth', 'ethnicity', 'purposed_position',
+              'status', 'review_notes')
 
     def queryset(self):
         qs = LeaderProfile.objects

@@ -62,4 +62,5 @@ class WikiSpider(CrawlSpider):
         item['title'] = title
         item['content'] = content
 
-        yield item
+        # yield item
+        print(title)

@@ -101,3 +101,4 @@ class PunishmentModel(models.Model):
 
     def __str__(self):
         return self.penalty_name
+

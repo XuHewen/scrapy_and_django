@@ -5,9 +5,10 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-from scrapy import signals
-from fake_useragent import UserAgent
 import random
+
+from fake_useragent import UserAgent
+from scrapy import signals
 
 
 class WikepediaSpiderMiddleware(object):
@@ -65,7 +66,10 @@ class RandomUserAgentMiddleware(object):
 
     def __init__(self, crawler):
         super(RandomUserAgentMiddleware, self).__init__()
-        self.ua = UserAgent()
+        try:
+            self.ua = UserAgent()
+        except Exception as e:
+            pass
         self.ua_type = crawler.settings.get('RANDOM_UA_TYPE', 'random')
 
     @classmethod

@@ -47,3 +47,4 @@ class QsSpider(RedisSpider):
         item_loader.add_xpath('image_url', image_url_xpath)
 
         return item_loader.load_item()
+
