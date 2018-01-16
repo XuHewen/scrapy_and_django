@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "scrapy/wikepedia"
+			"path": "scrapy/wikipedia"
 		},
 		{
-			"path": "scrapy/QiuShi"
+			"path": "scrapy/WikiSearch"
 		}
 	],
 	"settings": {
